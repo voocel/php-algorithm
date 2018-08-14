@@ -14,23 +14,9 @@
 
 $arr = [11,8,6,22,3,5,9];
 
-$num = count($arr);
-
 /*
-for($k=0;$k<$num;$k++){
-    for($i=0;$i<$num-$k-1;$i++){
-        if($arr[$i]>$arr[$i+1]){
-            $tmp = $arr[$i];
-            $arr[$i] = $arr[$i+1];
-            $arr[$i+1] = $tmp;
-        }
-    }
-}
-var_dump($arr);
-*/
-
-for($k=0;$k<$num;$k++){
-    for($i=$k+1;$i<$num;$i++){
+for($k=0;$k<$len;$k++){
+    for($i=$k+1;$i<$len;$i++){
         if($arr[$i]>$arr[$k]){
             $tmp = $arr[$i];
             $arr[$i] = $arr[$k];
@@ -39,3 +25,21 @@ for($k=0;$k<$num;$k++){
     }
 }
 var_dump($arr);
+*/
+function bubble($arr){
+    $len = count($arr);
+    //该层循环控制 需要冒泡的轮数
+    for($i=1;$i<$len;$i++){
+        //该层循环用来控制每轮 冒出一个数 需要比较的次数
+        for($k=0;$k<$len-$i;$k++){
+            if($arr[$k]>$arr[$k+1]){
+                $tmp = $arr[$k+1];
+                $arr[$k+1] = $arr[$k];
+                $arr[$k] = $tmp;
+            }
+        }
+    }
+    return $arr;
+}
+
+print_r(bubble($arr));
